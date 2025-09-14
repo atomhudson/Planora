@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router';
-import { ChipDirective, ChipListComponent, ChipsDirective, } from '@syncfusion/ej2-react-buttons';
+import {
+  ChipDirective,
+  ChipListComponent,
+  ChipsDirective,
+} from '@syncfusion/ej2-react-buttons';
 import { cn, getFirstWord } from '../lib/utils';
 
 const TripCard = ({
