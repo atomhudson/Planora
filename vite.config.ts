@@ -1,11 +1,28 @@
-import { reactRouter } from "@react-router/dev/vite";
-import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+import {
+  sentryReactRouter,
+  type SentryReactRouterBuildOptions,
+} from '@sentry/react-router';
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { reactRouter } from '@react-router/dev/vite';
 
-export default defineConfig({
-  plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
-    ssr:{
-      noExternal: [/@syncfusion/]
-    }
+const sentryConfig: SentryReactRouterBuildOptions = {
+  org: 'atomhudsoneng',
+  project: 'planora',
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+};
+
+export default defineConfig((config) => {
+  return {
+    plugins: [
+      tailwindcss(),
+      tsconfigPaths(),
+      reactRouter(),
+      sentryReactRouter(sentryConfig, config),
+    ],
+    ssr: {
+      noExternal: [/@syncfusion/],
+    },
+  };
 });
