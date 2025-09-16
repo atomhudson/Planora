@@ -3,7 +3,11 @@ import { PassThrough } from 'node:stream';
 import * as Sentry from '@sentry/react-router';
 import { getMetaTagTransformer } from '@sentry/react-router';
 
-import type { AppLoadContext, EntryContext, HandleErrorFunction, } from 'react-router';
+import type {
+  AppLoadContext,
+  EntryContext,
+  HandleErrorFunction,
+} from 'react-router';
 import { ServerRouter } from 'react-router';
 import { createReadableStreamFromReadable } from '@react-router/node';
 import { isbot } from 'isbot';
